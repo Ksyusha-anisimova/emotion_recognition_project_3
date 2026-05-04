@@ -1,0 +1,21 @@
+<mxfile host="app.diagrams.net" modified="2026-03-15T08:57:12.210764" agent="codex">
+  <diagram id="fig_3_3_sequence">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="s0" value="Пользователь" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="40" y="80" width="180" height="60" as="geometry"/></mxCell>
+        <mxCell id="s1" value="UI (index.html)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="260" y="80" width="180" height="60" as="geometry"/></mxCell>
+        <mxCell id="s2" value="Flask /predict" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="480" y="80" width="180" height="60" as="geometry"/></mxCell>
+        <mxCell id="s3" value="preprocess_image" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="700" y="80" width="180" height="60" as="geometry"/></mxCell>
+        <mxCell id="s4" value="EmotionCNN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="920" y="80" width="180" height="60" as="geometry"/></mxCell>
+        <mxCell id="s5" value="softmax + JSON" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="1140" y="80" width="180" height="60" as="geometry"/></mxCell>
+        <mxCell id="se0" style="endArrow=block;html=1;strokeColor=#2f2f2f;" edge="1" parent="1" source="s0" target="s1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="se1" style="endArrow=block;html=1;strokeColor=#2f2f2f;" edge="1" parent="1" source="s1" target="s2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="se2" style="endArrow=block;html=1;strokeColor=#2f2f2f;" edge="1" parent="1" source="s2" target="s3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="se3" style="endArrow=block;html=1;strokeColor=#2f2f2f;" edge="1" parent="1" source="s3" target="s4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="se4" style="endArrow=block;html=1;strokeColor=#2f2f2f;" edge="1" parent="1" source="s4" target="s5"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

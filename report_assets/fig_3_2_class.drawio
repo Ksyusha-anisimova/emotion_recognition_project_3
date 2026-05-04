@@ -1,0 +1,24 @@
+<mxfile host="app.diagrams.net" modified="2026-03-15T08:57:12.209505" agent="codex">
+  <diagram id="fig_3_2_class">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="cl1" value="EmotionCNN
+—
++ __init__(num_classes)
++ forward(x)
++ get_feature_maps(x)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="40" y="60" width="280" height="120" as="geometry"/></mxCell>
+        <mxCell id="cl2" value="EmotionFolderDataset
+—
++ __len__()
++ __getitem__(idx)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="380" y="60" width="260" height="120" as="geometry"/></mxCell>
+        <mxCell id="cl3" value="CustomConvLayer
+—
++ conv2d_manual(...)
++ explain_convolution()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="40" y="220" width="280" height="100" as="geometry"/></mxCell>
+        <mxCell id="e1" style="endArrow=none;html=1;strokeColor=#2f2f2f;" edge="1" parent="1" source="cl2" target="cl1"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

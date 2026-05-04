@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Распознавание эмоций - AI System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <div class="logo">
+            <!--                <span class="emoji"></span>-->
+            <h1>Распознавание эмоций</h1>
+        </div>
+        <p class="subtitle">Система анализа эмоций на основе глубокого обучения</p>
+    </header>
+
+    <nav class="tabs">
+        <button class="tab-button active" data-tab="upload">
+            Загрузить фото
+        </button>
+        <button class="tab-button" data-tab="webcam">
+            Веб-камера
+        </button>
+        <button class="tab-button" data-tab="info">
+            О проекте
+        </button>
+    </nav>
+
+    <div class="tab-content active" id="upload-tab">
+        <div class="upload-section">
+            <div class="upload-area" id="upload-area">
+                <!--                    <div class="upload-icon">📤</div>-->
+                <p class="upload-text">Перетащите изображение сюда</p>
+                <p class="upload-subtext">или</p>
+                <label for="file-input" class="upload-button">
+                    Выберите файл
+                </label>
+                <input type="file" id="file-input" accept="image/*" style="display: none;">
+                <p class="upload-hint">PNG, JPG или JPEG (макс. 16MB)</p>
+            </div>
+
+            <div class="preview-section" id="preview-section" style="display: none;">
+                <div class="image-preview">
+                    <img id="preview-image" src="" alt="Загруженное изображение">
+                </div>
+                <div class="preview-actions">
+                    <button class="analyze-button" id="analyze-button">
+                        Анализировать эмоцию
+                    </button>
+                    <button class="analyze-button secondary" id="new-image-button">
+                        Загрузить новое изображение
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="webcam-tab">
+        <div class="webcam-section">
+            <div class="camera-container">
+                <video id="webcam-video" autoplay playsinline></video>
+                <canvas id="webcam-canvas" style="display: none;"></canvas>
+            </div>
+            <div class="webcam-controls">
+                <button class="control-button" id="start-webcam">
+                    Запустить камеру
+                </button>
+                <button class="control-button" id="capture-photo" style="display: none;">
+                    Сделать фото
+                </button>
+                <button class="control-button secondary" id="stop-webcam" style="display: none;">
+                    Остановить
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="info-tab">
+        <div class="info-section">
+            <div class="info-card">
+                <h2>О проекте</h2>
+                <p>Система распознавания эмоций использует глубокое обучение для анализа выражений лица и определения эмоционального состояния человека.</p>
+            </div>
+
+            <div class="info-card">
+                <h2>Архитектура</h2>
+                <ul>
+                    <li><strong>Модель:</strong> Сверточная нейронная сеть (CNN)</li>
+                    <li><strong>Слои:</strong> 4 сверточных блока (7 сверток) + 3 полносвязных слоя</li>
+                    <li><strong>Параметры:</strong> ~2.5 млн обучаемых параметров</li>
+                    <li><strong>Размер входа:</strong> 48x48 пикселей (grayscale)</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h2>Распознаваемые эмоции</h2>
+                <div class="emotions-grid">
+                    <!--                        <div class="emotion-item">😠 Злость</div>-->
+                    <!--                        <div class="emotion-item">🤢 Отвращение</div>-->
+                    <!--                        <div class="emotion-item">😨 Страх</div>-->
+                    <div class="emotion-item">😊 Счастье</div>
+                    <div class="emotion-item">😢 Грусть</div>
+                    <!--                        <div class="emotion-item">😲 Удивление</div>-->
+                    <div class="emotion-item">😐 Нейтральное</div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h2>⚙Технологии</h2>
+                <ul>
+                    <li>Python 3.8+</li>
+                    <li>PyTorch - фреймворк глубокого обучения</li>
+                    <li>Flask - веб-фреймворк</li>
+                    <li>OpenCV - обработка изображений</li>
+                    <li>Haar Cascade - детекция лиц</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="results-section" id="results-section" style="display: none;">
+        <div class="results-header">
+            <h2 class="results-title">Результаты анализа</h2>
+            <button class="control-button secondary" id="results-new-image">
+                Загрузить новое изображение
+            </button>
+        </div>
+
+        <div class="result-main">
+            <div class="emotion-result">
+                <div class="emotion-emoji" id="result-emoji">😊</div>
+                <div class="emotion-info">
+                    <h3 id="result-emotion">Счастье</h3>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" id="confidence-fill"></div>
+                    </div>
+                    <p class="confidence-text">Уверенность: <span id="confidence-value">0%</span></p>
+                </div>
+            </div>
+
+            <div class="processed-image-container">
+                <img id="processed-image" src="" alt="Обработанное изображение">
+                <p class="image-caption" id="face-detection-status"></p>
+            </div>
+        </div>
+
+        <div class="probabilities-section">
+            <h3>Вероятности всех эмоций</h3>
+            <div class="probabilities-chart" id="probabilities-chart"></div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="loader"></div>
+        <p>Анализируем эмоцию...</p>
+    </div>
+</div>
+
+<!--    <footer class="footer">-->
+<!--        <p>Дипломный проект • Система распознавания эмоций • 2024</p>-->
+<!--    </footer>-->
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

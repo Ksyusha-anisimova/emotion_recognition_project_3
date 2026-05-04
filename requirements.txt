@@ -1,0 +1,27 @@
+# Core ML
+torch==2.2.2
+torchvision==0.17.2
+
+# Web
+flask>=2.3.0
+
+# CV (совместимо с NumPy 1.x)
+opencv-python>=4.8.0,<4.12
+
+# Numerical stack (CRITICAL)
+numpy>=1.24.0,<2.0
+scipy>=1.6.0,<2.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Images
+Pillow>=10.0.0
+
+# ML utils
+scikit-learn>=1.3.0
+pandas>=2.0.0,<2.2
+
+# Utils
+tqdm>=4.65.0

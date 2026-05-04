@@ -1,0 +1,25 @@
+<mxfile host="app.diagrams.net" modified="2026-03-15T08:21:45.552645" agent="codex">
+  <diagram id="fig_1_4_training_pipeline">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="2" value="Данные" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="40" y="40" width="160" height="60" as="geometry"/></mxCell>
+        <mxCell id="100" style="endArrow=block;html=1;strokeColor=#2f2f2f;" edge="1" parent="1" source="2" target="3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="3" value="Аугментации" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="240" y="40" width="160" height="60" as="geometry"/></mxCell>
+        <mxCell id="101" style="endArrow=block;html=1;strokeColor=#2f2f2f;" edge="1" parent="1" source="3" target="4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="4" value="DataLoader" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="440" y="40" width="160" height="60" as="geometry"/></mxCell>
+        <mxCell id="102" style="endArrow=block;html=1;strokeColor=#2f2f2f;" edge="1" parent="1" source="4" target="5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="5" value="Модель" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="640" y="40" width="160" height="60" as="geometry"/></mxCell>
+        <mxCell id="103" style="endArrow=block;html=1;strokeColor=#2f2f2f;" edge="1" parent="1" source="5" target="6"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="6" value="Loss" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="840" y="40" width="160" height="60" as="geometry"/></mxCell>
+        <mxCell id="104" style="endArrow=block;html=1;strokeColor=#2f2f2f;" edge="1" parent="1" source="6" target="7"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="7" value="Backprop" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="1040" y="40" width="160" height="60" as="geometry"/></mxCell>
+        <mxCell id="105" style="endArrow=block;html=1;strokeColor=#2f2f2f;" edge="1" parent="1" source="7" target="8"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="8" value="Adam" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="1240" y="40" width="160" height="60" as="geometry"/></mxCell>
+        <mxCell id="106" style="endArrow=block;html=1;strokeColor=#2f2f2f;" edge="1" parent="1" source="8" target="9"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="9" value="Сохранение модели" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4f4f4;strokeColor=#2f2f2f;" vertex="1" parent="1"><mxGeometry x="1440" y="40" width="160" height="60" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
