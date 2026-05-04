@@ -141,6 +141,41 @@ app.run(debug=True, host='0.0.0.0', port=8000)
 
 Полная документация: `DOCUMENTATION.md`
 
+## Режим 5 классов (happy, sad, neutral, angry, surprise)
+
+Этот режим запускается через `model/train_fer2013_b2.py` и `web_app/app.py`.
+
+1. Обучение 5-классовой модели:
+
+```bash
+OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 KMP_DUPLICATE_LIB_OK=TRUE \
+python3 model/train_fer2013_b2.py \
+  --classes happy,sad,neutral,angry,surprise \
+  --epochs 20 \
+  --batch_size 64 \
+  --num_workers 0 \
+  --output model/checkpoints/best_model_5c.pth
+```
+
+2. Проверка зависимостей (как и раньше):
+
+```bash
+python run.py check
+```
+
+3. Запуск сайта с 5-классовой моделью:
+
+```bash
+EMOTION_CHECKPOINT_PATH=model/checkpoints/best_model_5c.pth \
+OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 KMP_DUPLICATE_LIB_OK=TRUE \
+python3 web_app/app.py
+```
+
+4. Откройте в браузере:
+
+```text
+http://localhost:5000
+```
+
 ---
 
-**Удачи с проектом! 🎓**
