@@ -311,7 +311,7 @@ def main():
     parser.add_argument("--train_dir", type=str, default=None)
     parser.add_argument("--val_dir", type=str, default=None)
 
-    parser.add_argument("--classes", type=str, default="happy,sad,neutral")
+    parser.add_argument("--classes", type=str, default="happy,sad,neutral,angry,surprise")
     parser.add_argument("--val_fraction", type=float, default=0.15)
 
     parser.add_argument("--max_train_per_class", type=int, default=200)
@@ -443,7 +443,7 @@ def main():
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
     if args.output is None:
-        args.output = os.path.join(script_dir, "checkpoints", "fer2013_b2", "best_model_b2.pth")
+        args.output = os.path.join(script_dir, "checkpoints", "fer2013_5c", "best_model_5c.pth")
 
     if args.backup_existing and os.path.exists(args.output):
         out_dir = os.path.dirname(args.output)

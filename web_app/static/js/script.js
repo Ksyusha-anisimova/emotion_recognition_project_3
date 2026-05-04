@@ -206,7 +206,9 @@ function displayProbabilities(probabilities) {
     const emotions = {
         'Счастье': { emoji: '😊', color: '#FFD93D' },
         'Грусть': { emoji: '😢', color: '#6BCB77' },
-        'Нейтральное': { emoji: '😐', color: '#C7CEEA' }
+        'Нейтральное': { emoji: '😐', color: '#C7CEEA' },
+        'Злость': { emoji: '😠', color: '#FF6B6B' },
+        'Удивление': { emoji: '😲', color: '#4D96FF' }
     };
 
 
@@ -216,7 +218,7 @@ function displayProbabilities(probabilities) {
 
     sortedEmotions.forEach(([emotion, probability]) => {
         const percent = Math.round(probability * 100);
-        const emotionData = emotions[emotion];
+        const emotionData = emotions[emotion] || { emoji: '❓', color: '#999999' };
 
         const barElement = document.createElement('div');
         barElement.className = 'probability-bar';

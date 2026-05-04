@@ -1,6 +1,6 @@
 """
-Flask веб-приложение для распознавания эмоций (B2 версия)
-Классы: happy / sad / neutral
+Flask веб-приложение для распознавания эмоций (5 классов)
+Классы: happy / sad / neutral / angry / surprise
 """
 
 from flask import Flask, render_template, request, jsonify
@@ -17,7 +17,10 @@ import sys
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_DIR = os.path.abspath(os.path.join(BASE_DIR, "..", "model"))
-CHECKPOINT_PATH = os.path.join(MODEL_DIR, "checkpoints", "best_model_b2.pth")
+CHECKPOINT_PATH = os.environ.get(
+    "EMOTION_CHECKPOINT_PATH",
+    os.path.join(MODEL_DIR, "checkpoints", "best_model_5c.pth"),
+)
 
 sys.path.append(MODEL_DIR)
 
@@ -34,19 +37,21 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 model = None
 
 # ─────────────────────────────────────────────────────────────
-# Эмоции (B2)
+# Эмоции (5 классов)
 # Порядок ДОЛЖЕН совпадать с обучением
-# 0: happy, 1: sad, 2: neutral
+# 0: happy, 1: sad, 2: neutral, 3: angry, 4: surprise
 # ─────────────────────────────────────────────────────────────
 
 EMOTION_LABELS = {
     0: {"ru": "Счастье", "en": "Happy", "emoji": "😊", "color": "#FFD93D"},
     1: {"ru": "Грусть", "en": "Sad", "emoji": "😢", "color": "#6BCB77"},
     2: {"ru": "Нейтральное", "en": "Neutral", "emoji": "😐", "color": "#C7CEEA"},
+    3: {"ru": "Злость", "en": "Angry", "emoji": "😠", "color": "#FF6B6B"},
+    4: {"ru": "Удивление", "en": "Surprise", "emoji": "😲", "color": "#4D96FF"},
 }
 
 # ─────────────────────────────────────────────────────────────
-# Загрузка модели (B2)
+# Загрузка модели (5 классов)
 # ─────────────────────────────────────────────────────────────
 
 def load_model():
@@ -55,16 +60,18 @@ def load_model():
     print("Загрузка модели из:", CHECKPOINT_PATH)
     print("Файл существует:", os.path.exists(CHECKPOINT_PATH))
 
-    model = EmotionCNN(num_classes=3).to(device)
+    model = EmotionCNN(num_classes=5).to(device)
 
     if not os.path.exists(CHECKPOINT_PATH):
-        raise FileNotFoundError("❌ Чекпоинт B2 не найден")
+        raise FileNotFoundError(
+            f"❌ Чекпоинт 5-классовой модели не найден: {CHECKPOINT_PATH}"
+        )
 
     checkpoint = torch.load(CHECKPOINT_PATH, map_location=device)
     model.load_state_dict(checkpoint["model_state_dict"])
     model.eval()
 
-    print("✓ B2 модель успешно загружена")
+    print("✓ 5-классовая модель успешно загружена")
 
 # ─────────────────────────────────────────────────────────────
 # Face detection
@@ -193,7 +200,7 @@ if __name__ == "__main__":
     load_model()
 
     print("=" * 70)
-    print("ЗАПУСК ВЕБ-ПРИЛОЖЕНИЯ (B2)")
+    print("ЗАПУСК ВЕБ-ПРИЛОЖЕНИЯ (5 CLASSES)")
     print("Устройство:", device)
     print("http://localhost:5000")
     print("=" * 70)
